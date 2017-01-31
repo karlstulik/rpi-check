@@ -1,0 +1,71 @@
+body {
+	margin:0;
+}
+.switchContainer {
+	float: left;
+	text-align: center;
+	width: 120px;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 25px;
+	margin: 2px;
+	
+	border-radius: 25px;
+	border: 1px solid #6B6B6B;
+	// cursor: pointer;
+}
+.switch p {
+	position: absolute;
+	text-align: center;
+	font-size: 0.75em;
+	
+	font-weight: 200;
+	line-height: 10px;
+	margin: 3px 0 0 0;
+	padding: 0 32px;
+}
+.switch.pwr {
+	background-color: #CE9B9D;
+	color: #2B2B2B;
+}
+.switch.gnd {
+	background-color: #404040;
+	color: #E0E0E0;
+}
+.switch.gio {
+	background-color: #D5E4EB;
+	color: #2B2B2B;
+}
+.switch.clr {
+	background-color: #FFFFFF;
+	color: #2B2B2B;
+}
+.switchButton {
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	position: absolute;
+	transition: all 0.15s;
+	font-size: 1em;
+	font-weight: bold;
+	color: #FFFFFF;
+	line-height: 25px;
+	padding: 0;
+}
+.switchButton.none {
+	left:0;
+	background: rgba(0,0,0,0.2);
+}
+.switchButton.off {
+	left:0;
+	background: rgba(0,0,0,0.2);
+}
+.switchButton.on {
+	left:75px;
+	background: #47A8D8;
+}

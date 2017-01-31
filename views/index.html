@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>rpi-check</title>
+
+		<meta http-equiv="cleartype" content="on">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+		<meta name="description" content="Practice Organiser">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="360">
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<script type="text/javascript" src="/js/angular.min.js"></script>
+		<script type="text/javascript" src="/js/socket.io.min.js"></script>
+		<script type="text/javascript" src="/js/Chart.min.js"></script>
+		<script type="text/javascript" src="/js/angular-chart.min.js"></script>
+		<script type="text/javascript" src="/js/client.js"></script>
+	</head>
+
+	<body ng-app="app" ng-controller="main">
+		<div style="text-align: center; font-size: 1.2em; line-height: 32px;">rpi-check</div>
+		<div style="position: absolute; top: 32px; bottom: 0; left:0; width: 50%;" ng-if="data.history">
+			<canvas class="chart chart-line" chart-data="data.history.temp" chart-labels="data.history.labels" height="20%" width="100%" chart-options="tempOptions"></canvas>
+			<canvas class="chart chart-line" chart-data="data.history.ram" chart-labels="data.history.labels" height="20%" width="100%" chart-options="ramOptions"></canvas>
+			<canvas class="chart chart-line" chart-data="data.history.cpu" chart-labels="data.history.labels" height="20%" width="100%" chart-options="cpuOptions"></canvas>
+		</div>
+
+		<div style="position: absolute; top: 32px; bottom: 0; left:50%; width: 15%;">
+			<div style="width:240px; margin: 16px auto;" ng-if="data.pins">
+				<div class="switchContainer">
+					<div class="switch pwr">
+						<p>PWR 3.3v</p>
+						<div class="switchButton none">1</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch pwr">
+						<p>PWR 5v</p>
+						<div class="switchButton none">2</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 2</p>
+						<div class="switchButton none">3</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch pwr">
+						<p>PWR 5v</p>
+						<div class="switchButton none">4</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 3</p>
+						<div class="switchButton none">5</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">6</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 4</p>
+						<div class="switchButton {{switchClass(7)}}">7</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 14</p>
+						<div class="switchButton none">8</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">9</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 15</p>
+						<div class="switchButton none">10</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 17</p>
+						<div class="switchButton {{switchClass(11)}}">11</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 18</p>
+						<div class="switchButton {{switchClass(12)}}">12</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 21</p>
+						<div class="switchButton {{switchClass(13)}}">13</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">14</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 22</p>
+						<div class="switchButton {{switchClass(15)}}">15</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 23</p>
+						<div class="switchButton {{switchClass(16)}}">16</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch pwr">
+						<p>PWR 5v</p>
+						<div class="switchButton none">17</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 24</p>
+						<div class="switchButton {{switchClass(18)}}">18</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 10</p>
+						<div class="switchButton none">19</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">20</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 9</p>
+						<div class="switchButton none">21</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 25</p>
+						<div class="switchButton {{switchClass(22)}}">22</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 11</p>
+						<div class="switchButton none">23</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 8</p>
+						<div class="switchButton none">24</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">25</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>GPIO 7</p>
+						<div class="switchButton none">26</div>
+					</div>
+				</div>
+
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>DNC !!! </p>
+						<div class="switchButton none">27</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch clr">
+						<p>DNC !!! </p>
+						<div class="switchButton none">28</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 5</p>
+						<div class="switchButton {{switchClass(29)}}">29</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">30</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 6</p>
+						<div class="switchButton {{switchClass(31)}}">31</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 12</p>
+						<div class="switchButton {{switchClass(32)}}">32</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 13</p>
+						<div class="switchButton {{switchClass(33)}}">33</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">34</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 19</p>
+						<div class="switchButton {{switchClass(35)}}">35</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 16</p>
+						<div class="switchButton {{switchClass(36)}}">36</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 26</p>
+						<div class="switchButton {{switchClass(37)}}">37</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 20</p>
+						<div class="switchButton {{switchClass(38)}}">38</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gnd">
+						<p>GRND -</p>
+						<div class="switchButton none">39</div>
+					</div>
+				</div>
+				<div class="switchContainer">
+					<div class="switch gio">
+						<p>GPIO 21</p>
+						<div class="switchButton {{switchClass(40)}}">40</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="position: absolute; top: 32px; bottom: 0; right:0; width: 35%;">
+			<div style="padding:16px 0 8px 40px;">
+				<p ng-if="data.system.model">CPU - {{data.system.model}} Running at {{data.system.speed}}MHz</p>
+				<p ng-if="data.system.totalmem">RAM - {{data.system.totalmem}}MB Total</p>
+				<p ng-if="data.system.storage">HDD - {{data.system.storage.totalMegaBytes - data.system.storage.freeMegaBytes}}MB of {{data.system.storage.totalMegaBytes}}MB ({{data.system.storage.freeMegaBytes}}MB free)</p>
+			</div>
+		</div>
+
+	</body>
+
+</html>
