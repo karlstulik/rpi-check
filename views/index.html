@@ -29,6 +29,7 @@
 		</div>
 
 		<div style="position: absolute; top: 64px; bottom: 0; left:50%; width: 15%; text-align: center;">
+
 			<div style="width:240px; margin: 16px;" ng-if="data.pins">
 				<div class="switchContainer">
 					<div class="switch pwr">
@@ -277,7 +278,11 @@
 
 		<div style="position: absolute; top: 64px; bottom: 0; right:0; width: 35%;">
 			<div style="padding:16px 0 8px 40px;">
-				<p style="margin: 24px 0 0 0;">CPU - {{data.system.model}} Running at {{data.system.speed}}MHz</p>
+				<div class="switchKey" style="background-color: #CE9B9D; color: #000000;">POWER</div>
+				<div class="switchKey" style="background-color: #404040; color: #FFFFFF;">GROUND</div>
+				<div class="switchKey" style="background-color: #D5E4EB; color: #000000;">GPIO</div>
+				<div class="switchKey" style="background-color: #FFFFFF; color: #000000;">NONE</div>
+				<p style="margin: 24px 0 0 0;">CPU - {{data.system.model}} {{data.system.speed}}MHz</p>
 					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.cpu[0].length > 0"> - USED - {{ getLast( data.history.cpu[0] ) | number:2 }}%</div>
 					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.temp[0].length > 0"> - TEMP - {{ getLast( data.history.temp[0] ) | number:2 }}°C</div>
 				<p style="margin: 24px 0 0 0;">RAM - {{data.system.totalmem}}MB Total</p>
