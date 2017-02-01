@@ -2,9 +2,17 @@
 
 <p> Raspberry Pi system overview for NodeJS , viewed as a website.</p>
 <p>
+<b>Consists:</b><br>
 CPU Usage and Temperature<br>
 RAM Usage<br>
 HDD Usage<br>
+GPIO Tester<br>
+</p>
+<p>
+<b>Uses:</b><br>
+NodeJS<br>
+AngularJS<br>
+Socket.IO <i>for realtime updates</i><br>
 </p>
 
 <hr>
@@ -24,7 +32,7 @@ HDD Usage<br>
 <code>sudo npm install -g gulp-cli bower</code><br>
 <code>sudo npm install</code><br>
 <code>bower install</code><br>
-<code>sudo gulp  <b>or</b>  sudo node server</code><br>
+<code>sudo gulp</code><b> or </b><code>sudo node server</code><br>
 <hr>
 
 <p>Go to Raspberry Pi website. eg: 192.168.0.5:3000</p>
