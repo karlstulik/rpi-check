@@ -22,4 +22,4 @@ sudo npm install
 
 bower install
 
-sudo gulp
+sudo gulp  <i>or</i>  sudo node server

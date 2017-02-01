@@ -7,6 +7,7 @@
 		var socket = io.connect();
 
 		socket.on('init', function (data) {
+			console.log(data);
 			$scope.$apply(function() {
 				$scope.data = data;
 				$scope.tempOptions = {
@@ -97,6 +98,15 @@
 		// socket.on('storage', function(data) {
 		// 	$scope.data.system.storage = data;
 		// });
+
+
+		$scope.getLast = function(arr) {
+			if (arr) {
+				var last = _.last(arr);
+				return Math.round(last * 100) / 100;
+			}
+		};
+
 
 		socket.on('trigger', function (data) {
 			if ($scope.data) {

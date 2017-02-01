@@ -7,16 +7,17 @@ gulp.task('default', function () {
 		'bower_components/angular/angular.min.js',
 		'bower_components/socket.io-client/dist/socket.io.min.js',
 		'bower_components/chart.js/dist/Chart.min.js',
-		'bower_components/angular-chart.js/dist/angular-chart.min.js'
+		'bower_components/angular-chart.js/dist/angular-chart.min.js',
+		'bower_components/underscore/underscore-min.js',
 	];
 
 	gulp.src(files).pipe(gulp.dest('public/js/'));
 
 	nodemon({
-	script: 'server.js',
-	ext: 'js html',
-	env: {
-		'NODE_ENV': 'development'
-	}
+		script: 'server.js',
+		ext: 'js html',
+		env: {
+			'NODE_ENV': 'development'
+		}
 	});
 });

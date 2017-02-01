@@ -16,19 +16,20 @@
 		<script type="text/javascript" src="/js/socket.io.min.js"></script>
 		<script type="text/javascript" src="/js/Chart.min.js"></script>
 		<script type="text/javascript" src="/js/angular-chart.min.js"></script>
+		<script type="text/javascript" src="/js/underscore-min.js"></script>
 		<script type="text/javascript" src="/js/client.js"></script>
 	</head>
 
 	<body ng-app="app" ng-controller="main">
-		<div style="text-align: center; font-size: 1.2em; line-height: 32px;">rpi-check</div>
-		<div style="position: absolute; top: 32px; bottom: 0; left:0; width: 50%;" ng-if="data.history">
+		<div style="text-align: center; font-weight:200; font-size: 1.8em; line-height: 48px; border-bottom: 1px solid #666666; letter-spacing: 8px;">rpi-check</div>
+		<div style="position: absolute; top: 64px; bottom: 0; left:0; width: 50%;" ng-if="data.history">
 			<canvas class="chart chart-line" chart-data="data.history.temp" chart-labels="data.history.labels" height="20%" width="100%" chart-options="tempOptions"></canvas>
 			<canvas class="chart chart-line" chart-data="data.history.ram" chart-labels="data.history.labels" height="20%" width="100%" chart-options="ramOptions"></canvas>
 			<canvas class="chart chart-line" chart-data="data.history.cpu" chart-labels="data.history.labels" height="20%" width="100%" chart-options="cpuOptions"></canvas>
 		</div>
 
-		<div style="position: absolute; top: 32px; bottom: 0; left:50%; width: 15%;">
-			<div style="width:240px; margin: 16px auto;" ng-if="data.pins">
+		<div style="position: absolute; top: 64px; bottom: 0; left:50%; width: 15%; text-align: center;">
+			<div style="width:240px; margin: 16px;" ng-if="data.pins">
 				<div class="switchContainer">
 					<div class="switch pwr">
 						<p>PWR 3.3v</p>
@@ -185,99 +186,106 @@
 						<div class="switchButton none">26</div>
 					</div>
 				</div>
-
-				<div class="switchContainer">
-					<div class="switch clr">
-						<p>DNC !!! </p>
-						<div class="switchButton none">27</div>
+				<div ng-if="data.pins.gpio29 != null">
+					<div class="switchContainer">
+						<div class="switch clr">
+							<p>DNC !!! </p>
+							<div class="switchButton none">27</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch clr">
-						<p>DNC !!! </p>
-						<div class="switchButton none">28</div>
+					<div class="switchContainer">
+						<div class="switch clr">
+							<p>DNC !!! </p>
+							<div class="switchButton none">28</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 5</p>
-						<div class="switchButton {{switchClass(29)}}">29</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 5</p>
+							<div class="switchButton {{switchClass(29)}}">29</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gnd">
-						<p>GRND -</p>
-						<div class="switchButton none">30</div>
+					<div class="switchContainer">
+						<div class="switch gnd">
+							<p>GRND -</p>
+							<div class="switchButton none">30</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 6</p>
-						<div class="switchButton {{switchClass(31)}}">31</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 6</p>
+							<div class="switchButton {{switchClass(31)}}">31</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 12</p>
-						<div class="switchButton {{switchClass(32)}}">32</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 12</p>
+							<div class="switchButton {{switchClass(32)}}">32</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 13</p>
-						<div class="switchButton {{switchClass(33)}}">33</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 13</p>
+							<div class="switchButton {{switchClass(33)}}">33</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gnd">
-						<p>GRND -</p>
-						<div class="switchButton none">34</div>
+					<div class="switchContainer">
+						<div class="switch gnd">
+							<p>GRND -</p>
+							<div class="switchButton none">34</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 19</p>
-						<div class="switchButton {{switchClass(35)}}">35</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 19</p>
+							<div class="switchButton {{switchClass(35)}}">35</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 16</p>
-						<div class="switchButton {{switchClass(36)}}">36</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 16</p>
+							<div class="switchButton {{switchClass(36)}}">36</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 26</p>
-						<div class="switchButton {{switchClass(37)}}">37</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 26</p>
+							<div class="switchButton {{switchClass(37)}}">37</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 20</p>
-						<div class="switchButton {{switchClass(38)}}">38</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 20</p>
+							<div class="switchButton {{switchClass(38)}}">38</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gnd">
-						<p>GRND -</p>
-						<div class="switchButton none">39</div>
+					<div class="switchContainer">
+						<div class="switch gnd">
+							<p>GRND -</p>
+							<div class="switchButton none">39</div>
+						</div>
 					</div>
-				</div>
-				<div class="switchContainer">
-					<div class="switch gio">
-						<p>GPIO 21</p>
-						<div class="switchButton {{switchClass(40)}}">40</div>
+					<div class="switchContainer">
+						<div class="switch gio">
+							<p>GPIO 21</p>
+							<div class="switchButton {{switchClass(40)}}">40</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div style="position: absolute; top: 32px; bottom: 0; right:0; width: 35%;">
+		<div style="position: absolute; top: 64px; bottom: 0; right:0; width: 35%;">
 			<div style="padding:16px 0 8px 40px;">
-				<p ng-if="data.system.model">CPU - {{data.system.model}} Running at {{data.system.speed}}MHz</p>
-				<p ng-if="data.system.totalmem">RAM - {{data.system.totalmem}}MB Total</p>
-				<p ng-if="data.system.storage">HDD - {{data.system.storage.totalMegaBytes - data.system.storage.freeMegaBytes}}MB of {{data.system.storage.totalMegaBytes}}MB ({{data.system.storage.freeMegaBytes}}MB free)</p>
+				<p style="margin: 24px 0 0 0;">CPU - {{data.system.model}} Running at {{data.system.speed}}MHz</p>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.cpu[0].length > 0"> - USED - {{ getLast( data.history.cpu[0] ) | number:2 }}%</div>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.temp[0].length > 0"> - TEMP - {{ getLast( data.history.temp[0] ) | number:2 }}°C</div>
+				<p style="margin: 24px 0 0 0;">RAM - {{data.system.totalmem}}MB Total</p>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.ram[0].length > 0"> - USED - {{ getLast( data.history.ram[0] ) | number:2 }}MB</div>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.history.ram[0].length > 0 && data.system.totalmem"> - FREE - {{ data.system.totalmem - getLast( data.history.ram[0] ) | number:2  }}MB</div>
+				<p style="margin: 24px 0 0 0;">HDD - {{data.system.storage.totalMegaBytes}}MB Total</p>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.system.storage.freeMegaBytes"> - USED - {{data.system.storage.totalMegaBytes - data.system.storage.freeMegaBytes}}MB</div>
+					<div style="font-size: 0.9em; opacity: 0.8;" ng-if="data.system.storage.totalMegaBytes"> - FREE - {{data.system.storage.freeMegaBytes}}MB</div>
 			</div>
 		</div>
 
