@@ -1,6 +1,6 @@
 # rpi-check
 
-<p> Raspberry Pi system overview for NodeJS , viewed as a website.</p>
+<p> Raspberry Pi system overview for NodeJS , viewed as a website. Great for running with RetroPi to check if you need better cooling or more storage.</p>
 <p>
 <b>Consists:</b><br>
 CPU Usage and Temperature<br>
@@ -32,7 +32,7 @@ Socket.IO <i>for realtime updates</i><br>
 <code>cd rpi-check</code><br>
 <code>sudo npm install -g gulp-cli bower</code><br>
 <code>sudo npm install</code><br>
-<code>bower install</code><br>
+<code>bower install</code> or <code>sudo bower install --allor-root</code><br>
 <code>sudo gulp</code><b> or </b><code>sudo node server</code><br>
 <hr>
 
