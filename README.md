@@ -21,9 +21,10 @@ Socket.IO <i>for realtime updates</i><br>
 <code>wget https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-armv7l.tar.gz</code> Download File, check for updates.<br>
 <code>tar -xvf node-v6.9.1-linux-armv7l.tar.gz</code> Extract Files<br>
 <code>cd node-v6.9.1-linux-armv7l</code><br>
-<code>cp -R * /usr/local/</code> Copies Files<br>
+<code>sudo cp -R * /usr/local/</code> Copies Files<br>
 <code>cd ..</code><br>
-<code>rm -R node-v6.9.1-linux-armv7l</code> Removes Old Folder<br>
+<code>sudo rm -R node-v6.9.1-linux-armv7l.tar.gz</code> Removes Old Downloaded File<br>
+<code>sudo rm -R node-v6.9.1-linux-armv7l</code> Removes Old Folder<br>
 <hr>
 
 <h3>Install:</h3>
